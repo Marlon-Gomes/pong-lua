@@ -173,7 +173,7 @@ Any contributions you make are **greatly appreciated**.If you have a suggestion 
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+2. Create your Feature Branch by branching from develop (`git checkout -b feature/AmazingFeature develop`)
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
@@ -185,7 +185,9 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Pong-lua is distributed under the MIT License. See `LICENSE.txt` for more information.
+
+Pong-lua relies on source code and media files that are subject to licenses of their own. Please consult the third-party licenses [README.md][third-party-licenses-url] for a list containing links to individual licenses.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -232,3 +234,4 @@ is below https://github.com/games50/pong.
 [product-screenshot]: images/screenshot.pngA
 [love-logo]: images/love_logo.png
 [lua-logo]: images/lua_logo.png
+[third-party-licenses-url]: THIRD_PARTY_LICENSES/README.md
