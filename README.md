@@ -4,6 +4,67 @@
 <!--
 TODO: Add shields related to testing, building, and so on.
 -->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/github_username/repo_name">
+    <img src="images/pong.png" alt="Logo" width="250">
+  </a>
+
+<h3 align="center">Pong-Lua</h3>
+
+  <p align="center">
+    project_description
+    <br />
+    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    ·
+    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+  </p>
+</div>
+
+
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
 <!--
 TODO: Add a screenshot
@@ -11,7 +72,7 @@ TODO: Add a screenshot
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 -->
 
-Pong is a classic game that simualtes table tennis, released for Atari in 1972. The game features two paddles, controleed by the players, which move vertically across the left and right sides of the screen. Additionally, the game features a ball, which travels across the screen, bouncing off the top and bottom edges and the paddles. Players must try to hit the ball with their paddles to prevent it from falling off the vertical edges of the screen. A player scores when the opposing player fails to catch the ball. The first player to score 11 points wins.
+Pong is a classic game that simulates table tennis, released for Atari in 1972. The game features two paddles, controled by the players, which move vertically across the left and right sides of the screen. Additionally, the game features a ball, which travels across the screen, bouncing off the top and bottom edges and the paddles. Players must try to hit the ball with their paddles to prevent it from falling off the vertical edges of the screen. A player scores when the opposing player fails to catch the ball. The first player to score 11 points wins.
 
 This project implements Pong with the Lua programming language, using the LÖVE2D framework. It is inspired by Harvard's University 2018 CDS0 course, taught by Colton Ogden. The lectures are available on this [Youtube playlist](https://www.youtube.com/playlist?list=PLWKjhJtqVAbluXJKKbCIb4xd7fcRkpzoz).
 
@@ -165,7 +226,7 @@ is below https://github.com/games50/pong.
 [issues-shield]: https://img.shields.io/github/issues/Marlon-Gomes/pong-lua.svg?style=for-the-badge
 [issues-url]: https://github.com/Marlon-Gomes/pong-lua/issues
 [license-shield]: https://img.shields.io/github/license/Marlon-Gomes/pong-lua.svg?style=for-the-badge
-[license-url]: https://github.com/Marlon-Gomes/pong-lua/blob/master/LICENSE.txt
+[license-url]: https://github.com/Marlon-Gomes/pong-lua/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/marlon-deoliveiragomes
 [product-screenshot]: images/screenshot.pngA
