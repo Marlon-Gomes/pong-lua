@@ -207,11 +207,8 @@ Project Link: [https://github.com/Marlon-Gomes/pong-lua](https://github.com/Marl
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* This code is based on [Colton Ogden](https://github.com/coltonoscopy)'s
-interpretation of the game. It was the subject of a lecture in
-his CS50 course at Harvard in 2018. The link to the original repo
-is below https://github.com/games50/pong.
-
+* This code is based on [Colton Ogden](https://github.com/coltonoscopy)'s interpretation of the game. It was the subject of a lecture in his CS50 course at Harvard in 2018. The original repo can be found at https://github.com/games50/pong.
+* Classes are not native to the Lua languange. The implementation of classes used here, <code>class.lua</code>, is part of the [hump][hump-docs] package, a suite of tools for game development in the LÖVE framework due to Matthias Richter.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -232,6 +229,7 @@ is below https://github.com/games50/pong.
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/marlon-deoliveiragomes
 [product-screenshot]: images/screenshot.pngA
+[hump-docs]: https://hump.readthedocs.io/en/latest/#
 [love-logo]: images/love_logo.png
 [lua-logo]: images/lua_logo.png
 [third-party-licenses-url]: THIRD_PARTY_LICENSES/README.md

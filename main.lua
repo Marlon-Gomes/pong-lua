@@ -1,35 +1,31 @@
 --[[
-    Project: Pong Remake
+    Project: Pong-Lua
+    A remake of the classic Atari game Pong in Lua.
 
-    -- Main Program --
+    File: main.lua
+    The Main Program
 
     Author: Marlon de Oliveira Gomes
     mgomes.math@gmail.com
 ]]
 
 --[[
-    Importing libraries
-]]
-
---[[
     Low-res appearance: push (https://github.com/Ulydev/push) is a library
     that allows us to draw the game at a virtual resolution.
 ]]
-push = require 'push'
+local push = require 'push'
+
+local constants = require 'constants'
 
 --[[
-    Game settings
+    Importing classes
 ]]
-WINDOW_WIDTH = 1280
-WINDOW_HEIGHT = 720
-
-VIRTUAL_WIDTH = 432
-VIRTUAL_HEIGHT = 243
--- paddle speed
-PADDLE_SPEED = 200
-
+local Ball = require 'Ball'
+local Paddle = require 'Paddle'
+local Player = require 'Player'
+local Scoreboard = require 'Scoreboard'
 --[[
-    Initiali zer
+    Initializer
 ]]
 function love.load()
     -- use nearest-neighbor filtering on upscaling and downscaling
@@ -45,36 +41,24 @@ function love.load()
     love.graphics.setFont(smallFont)
     -- initialize virtualization
     push:setupScreen(
-        VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT,
+        constants.VIRTUAL_WIDTH,
+        constants.VIRTUAL_HEIGHT,
+        constants.WINDOW_WIDTH,
+        constants.WINDOW_HEIGHT,
         {
             fullscreen = false,
             resizable = false,
             vsync = true
         }
     )
-    --[[
-        Player variables
-    ]]
-    -- Initialize score variables
-    player1Score = 0
-    player2Score = 0
-    -- Player paddle Y positions
-    player1Y = 30
-    player2Y = VIRTUAL_HEIGHT - 50
-    --[[
-        Ball variables
-    ]]
-    -- Initialize ball position
-    ballX = VIRTUAL_WIDTH / 2 - 2
-    ballY = VIRTUAL_HEIGHT / 2 + 2
-    -- Initialize ball velocity
-    --[[
-        Use Lua's ternary operator syntax to simulate a coin flip: draw a
-        random integer between 1 and 2; if the former, move to the right; else
-        move to the left.
-    ]]
-    ballDX = math.random(2) == 1 and 100 or -100
-    ballDY = math.random(-50, 50)
+    -- Initialize the game's assets
+    -- Ball
+    ball = Ball()
+    -- Players (each with their own paddle and score).
+    player1 = Player(1)
+    player2 = Player(2)
+    -- Scoreboard
+    scoreboard = Scoreboard()
     --[[
         Initialize the game state into 'start' mode
     ]]
@@ -82,30 +66,13 @@ function love.load()
 end
 
 function love.update(dt)
-    --[[
-        Paddle movements. Recall the reverse y-axis orientation.
-        Use math.max to prevent paddle to go over the top edge of the screen.
-        Use math.min to prevent paddle to go under the bottom edge of the screen
-         (take the height of the paddle into account).
-    ]]
-    -- Player 1 movement
-    if love.keyboard.isDown('w') then
-        player1Y = math.max(0, player1Y - PADDLE_SPEED * dt)
-    elseif love.keyboard.isDown('s') then
-        player1Y = math.min(VIRTUAL_HEIGHT - 20, player1Y + PADDLE_SPEED * dt)
-    end
-    -- Player 2 movement
-    if love.keyboard.isDown('up') then
-        player2Y = math.max(0, player2Y - PADDLE_SPEED * dt)
-    elseif love.keyboard.isDown('down') then
-        player2Y = math.min(VIRTUAL_HEIGHT - 20, player2Y + PADDLE_SPEED * dt)
-    end
-    --[[
-        Ball movement
-    ]]
     if gameState == 'play' then
-        ballX = ballX + ballDX * dt
-        ballY = ballY + ballDY * dt
+        -- Player 1 movement
+        player1.paddle:update(dt)
+        -- Player 2 movement
+        player2.paddle:update(dt)
+        -- Ball movement
+        ball:update(dt)
     end
 end
 --[[
@@ -119,17 +86,12 @@ function love.keypressed(key)
             gameState = 'play'
         else -- Return to start screen
             gameState = 'start'
-            -- TODO: this is repetitive; fix it.
-            -- Reinitialize ball and paddle positions
-            -- Player paddle Y positions
-            player1Y = 30
-            player2Y = VIRTUAL_HEIGHT - 50
+            -- Reset game assets
+            -- Player scores
+            player1:reset()
+            player2:reset()
             -- Ball positions
-            ballX = VIRTUAL_WIDTH / 2 - 2
-            ballY = VIRTUAL_HEIGHT / 2 + 2
-            -- Initialize ball velocity
-            ballDX = math.random(2) == 1 and 100 or -100
-            ballDY = math.random(-50, 50)
+            ball:reset()
         end
     end
 end
@@ -152,35 +114,25 @@ function love.draw()
         Add rectangles for paddles and ball
     ]]
     -- left side
-    love.graphics.rectangle('fill', 10, player1Y, 5, 20)
+    player1.paddle:render()
     -- right side
-    love.graphics.rectangle('fill', VIRTUAL_WIDTH - 10, player2Y, 5, 20)
+    player2.paddle:render()
     -- Draw "Hello, Pong!" if game is in start mode
     if gameState == 'start' then
         love.graphics.printf(
-            'Hello, Pong!',             -- Welcome text
-            0,                          -- Starting X
-            VIRTUAL_HEIGHT / 2 - 6,      -- Starting Y
-            VIRTUAL_WIDTH,               -- Number of pixels to center within
-            'center'                    -- alignment mode
+            'Hello, Pong!',                   -- Welcome text
+            0,                                -- Starting X
+            constants.VIRTUAL_HEIGHT / 2 - 6, -- Starting Y
+            constants.VIRTUAL_WIDTH,          -- # of pixels to center within
+            'center'                          -- alignment mode
         )
     end
     -- Draw game score board and ball only if game is in play mode
     if gameState == 'play' then
-        -- draw score
-        love.graphics.setFont(scoreFont)
-        love.graphics.print(
-            tostring(player1Score),
-            VIRTUAL_WIDTH / 2 - 54,
-            VIRTUAL_HEIGHT / 15
-        )
-        love.graphics.print(
-            tostring(player2Score),
-            VIRTUAL_WIDTH / 2 + 22,
-            VIRTUAL_HEIGHT / 15
-        )
-        -- ball
-        love.graphics.rectangle('fill', ballX, ballY, 4, 4)
+        -- Draw scoreboard
+        scoreboard:render(player1.score, player2.score)
+        -- Draw ball
+        ball:render()
     end
     -- end rendering at virtual resolution
     push:apply('end')

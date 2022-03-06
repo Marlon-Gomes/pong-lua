@@ -4,6 +4,12 @@ Pong-lua uses third-party software and media that are compatibly licensed. We li
 
 ## Code
 
+### class
+File: [class.lua][class]</br>
+Website: https://github.com/vrld/hump </br>
+License: [View license][class-license]</br>
+Copyright (c) 2010-2013 Matthias Richter
+
 ### push
 
 File: [push.lua][push] </br>
