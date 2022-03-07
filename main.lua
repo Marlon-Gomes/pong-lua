@@ -74,6 +74,17 @@ function love.update(dt)
             one of the paddles. If so, handle the collision.
         ]]
         ball:handleCollisions(player1.paddle, player2.paddle)
+        --[[
+            Check if the ball has gone out of bounds. If so, increment score
+            and reset the ball.
+        ]]
+        if ball.x < 0 then
+                player2.score = player2.score + 1
+                ball:reset()
+        elseif ball.x > constants.VIRTUAL_WIDTH then
+                player1.score = player1.score + 1
+                ball:reset()
+        end
         -- Player 1 movement
         player1.paddle:update(dt)
         -- Player 2 movement

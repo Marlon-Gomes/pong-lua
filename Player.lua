@@ -51,7 +51,7 @@ end
 
 function Player:reset()
     --[[
-        Resets the player score.
+        Resets the player score. Resets the player's paddle.
         ===
         Parameters:
         None
