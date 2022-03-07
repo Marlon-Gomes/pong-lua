@@ -30,6 +30,8 @@ local Scoreboard = require 'Scoreboard'
 function love.load()
     -- use nearest-neighbor filtering on upscaling and downscaling
     love.graphics.setDefaultFilter('nearest','nearest')
+    -- set the title of our application window
+    love.window.setTitle('Pong')
     -- set a random seed based on UNIX timestamp
     math.randomseed(os.time())
     -- Declare fonts
@@ -139,6 +141,16 @@ function love.draw()
         -- Draw ball
         ball:render()
     end
+    -- new function just to demonstrate how to see FPS in LÃVE2D
+    displayFPS()
     -- end rendering at virtual resolution
     push:apply('end')
+end
+
+-- Renders the current FPS.
+function displayFPS()
+    -- simple FPS display across all states
+    love.graphics.setFont(smallFont)
+    love.graphics.setColor(0, 255, 0, 255)
+    love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 10, 10)
 end
