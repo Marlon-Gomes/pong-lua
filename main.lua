@@ -67,6 +67,11 @@ end
 
 function love.update(dt)
     if gameState == 'play' then
+        --[[
+            Check if ball has collided with either the top or bottom edges or
+            one of the paddles. If so, handle the collision.
+        ]]
+        ball:handleCollisions(player1.paddle, player2.paddle)
         -- Player 1 movement
         player1.paddle:update(dt)
         -- Player 2 movement
