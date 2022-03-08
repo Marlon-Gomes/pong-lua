@@ -159,6 +159,7 @@ function Ball:collidesWithPaddle(paddle)
     ) then
         return false
     else
+        constants.PADDLE_HIT:play()
         return true
     end
 end
@@ -214,10 +215,14 @@ function Ball:handleCollisions(paddle1, paddle2)
         -- reset the ball's position to the top edge
         self.y = 0
         self.dy = -self.dy
+        -- play sound
+        constants.WALL_HIT:play()
     elseif self.y >= constants.VIRTUAL_HEIGHT - 4 then
         --reset the ball's postion to the bottom edge
         self.y = constants.VIRTUAL_HEIGHT - 4
         self.dy = -self.dy
+        -- play sound
+        constants.WALL_HIT:play()
     -- Now check for collisions with the paddles
     elseif self:collidesWithPaddle(paddle1) then
         self:bounceOffPaddle(paddle1)

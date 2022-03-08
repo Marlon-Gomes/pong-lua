@@ -35,12 +35,8 @@ function love.load()
     -- set a random seed based on UNIX timestamp
     math.randomseed(os.time())
     -- Declare fonts
-    smallFont = love.graphics.newFont(
-        'fonts/atari-classic-font/AtariClassicChunky-PxXP.ttf', 8)
-    largeFont = love.graphics.newFont(
-            'fonts/atari-classic-font/AtariClassicChunky-PxXP.ttf', 16)
     -- Set font for the welcome screen
-    love.graphics.setFont(smallFont)
+    love.graphics.setFont(constants.SMALLFONT)
     -- initialize virtualization
     push:setupScreen(
         constants.VIRTUAL_WIDTH,
@@ -87,6 +83,7 @@ function love.update(dt)
                     winningPlayer = 2
                     gameState = 'done'
                 else
+                    constants.SCORE:play()
                     gameState = 'serve'
                 end
         elseif ball.x > constants.VIRTUAL_WIDTH then
@@ -94,8 +91,10 @@ function love.update(dt)
                 servingPlayer = 1
                 if player1.score == 11 then
                     winningPlayer = 1
+                    constants.VICTORY:play()
                     gameState = 'done'
                 else
+                    constants.SCORE:play()
                     gameState = 'serve'
                 end
         end
@@ -155,7 +154,7 @@ function love.draw()
     --]]
     love.graphics.clear(40/255, 45/255, 52/255, 1)
     -- using virtual width and virtual height
-    love.graphics.setFont(smallFont)
+    love.graphics.setFont(constants.SMALLFONT)
     -- Draw regardless of game game state
     --[[
         Add rectangles for paddles and ball
@@ -174,7 +173,7 @@ function love.draw()
             'center'                          -- alignment mode
         )
     elseif gameState == 'serve' then
-        love.graphics.setFont(smallFont)
+        love.graphics.setFont(constants.SMALLFONT)
         love.graphics.printf(
             'Player ' .. tostring(servingPlayer) .. "'s serve!",
             0, 10, constants.VIRTUAL_WIDTH, 'center'
@@ -189,12 +188,12 @@ function love.draw()
         -- Draw ball
         ball:render()
     elseif gameState == 'done' then
-        love.graphics.setFont(largeFont)
+        love.graphics.setFont(constants.LARGEFONT)
         love.graphics.printf(
             "Player " .. tostring(winningPlayer) .. " wins!",
             0, 10, constants.VIRTUAL_WIDTH, 'center'
         )
-        love.graphics.setFont(smallFont)
+        love.graphics.setFont(constants.SMALLFONT)
         love.graphics.printf(
             'Press enter to restart!',
             0, 30, constants.VIRTUAL_WIDTH, 'center'
@@ -209,7 +208,7 @@ end
 -- Renders the current FPS.
 function displayFPS()
     -- simple FPS display across all states
-    love.graphics.setFont(smallFont)
+    love.graphics.setFont(constants.SMALLFONT)
     love.graphics.setColor(0, 255, 0, 255)
     love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 10, 10)
 end

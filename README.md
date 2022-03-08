@@ -209,7 +209,7 @@ Project Link: [https://github.com/Marlon-Gomes/pong-lua](https://github.com/Marl
 
 * This code is based on [Colton Ogden](https://github.com/coltonoscopy)'s interpretation of the game. It was the subject of a lecture in his CS50 course at Harvard in 2018. The original repo can be found at https://github.com/games50/pong.
 * Classes are not native to the Lua languange. The implementation of classes used here, <code>class.lua</code>, is part of the [hump][hump-docs] package, a suite of tools for game development in the LÖVE framework due to Matthias Richter.
-
+* Sound effects were generated with [jsfxr](https://github.com/chr15m/jsfxr). Many thanks to the contributors of the project.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
