@@ -39,19 +39,21 @@ local Ball = Class{}
     render - renders the ball to the screen
 ]]
 
-local function setVelocity ()
+local function setVelocity (servingPlayer)
     --[[
-        Helper function to initialize the ball's velocity
+        Helper function to initialize the ball's velocity. Favors the serving
+        player's direction if a servingPlayer is provided. Otherwise serves to
+        a random side.
         ===
         Parameters:
-        None
+        servingPlayer(optional)
         ===
         Returns:
         dx - an int, horitontal velocity
         dy - an int, vertical velocity
         ===
         Usage:
-        vx, vy = setVelocity()
+        dx, dy = setVelocity()
     ]]
     --[[
         Draw horizontal velocity.
@@ -59,7 +61,14 @@ local function setVelocity ()
         random integer between 1 and 2; if the former, move to the right; else
         move to the left.
     ]]
-    dx = math.random(2) == 1 and 100 or -100
+    servingPlayer = servingPlayer or 0
+    if servingPlayer == 0 then
+        dx = math.random(2) == 1 and 100 or -100
+    elseif servingPlayer == 1 then
+        dx = 100
+    elseif servingPlayer == 2 then
+        dx = -100
+    end
     dy = math.random(-50, 50)
     return dx, dy
 end
@@ -87,22 +96,25 @@ function Ball:init()
     self.dx, self.dy = setVelocity()
 end
 
-function Ball:reset()
+function Ball:reset(servingPlayer)
     --[[
-        Reset the ball to a given position; randomly assign it a new velocity.
+        Reset the ball to the center of the screen. If a servingPlayer is
+        provided, serves in the direction favorable to this player. Otherwise,
+        assigns a random initial velocity.
+
         ===
         Parameters:
-        x: the ball's new horizontal position after reset
-        y: the ball's new vertical position after reset
+        servingPlayer - an int; an optional identifier to the serving player.
         ===
         Returns:
         nil
     ]]
+    servingPlayer = servingPlayer or 0
     -- Ball positions
     self.x = constants.VIRTUAL_WIDTH / 2 - 2
     self.y = constants.VIRTUAL_HEIGHT / 2 -2
     -- Initialize ball velocity
-    self.dx, self.dy = setVelocity()
+    self.dx, self.dy = setVelocity(servingPlayer)
 end
 
 function Ball:update(dt)

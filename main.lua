@@ -68,7 +68,9 @@ function love.load()
 end
 
 function love.update(dt)
-    if gameState == 'play' then
+    if gameState == 'serve' then
+        ball:reset(servingPlayer)
+    elseif gameState == 'play' then
         --[[
             Check if ball has collided with either the top or bottom edges or
             one of the paddles. If so, handle the collision.
@@ -80,10 +82,12 @@ function love.update(dt)
         ]]
         if ball.x < 0 then
                 player2.score = player2.score + 1
-                ball:reset()
+                servingPlayer = 2
+                gameState = 'serve'
         elseif ball.x > constants.VIRTUAL_WIDTH then
                 player1.score = player1.score + 1
-                ball:reset()
+                servingPlayer = 1
+                gameState = 'serve'
         end
         -- Player 1 movement
         player1.paddle:update(dt)
@@ -101,6 +105,8 @@ function love.keypressed(key)
         love.event.quit()
     elseif key == 'enter' or key == 'return' then
         if gameState == 'start' then -- Initialize game
+            gameState = 'play'
+        elseif gameState == 'serve' then
             gameState = 'play'
         else -- Return to start screen
             gameState = 'start'
@@ -144,15 +150,23 @@ function love.draw()
             constants.VIRTUAL_WIDTH,          -- # of pixels to center within
             'center'                          -- alignment mode
         )
-    end
+    elseif gameState == 'serve' then
+        love.graphics.setFont(smallFont)
+        love.graphics.printf(
+            'Player ' .. tostring(servingPlayer) .. "'s serve!",
+            0, 10, constants.VIRTUAL_WIDTH, 'center'
+        )
+        love.graphics.printf(
+            'Press Enter to serve!', 0, 20, constants.VIRTUAL_WIDTH, 'center'
+        )
     -- Draw game score board and ball only if game is in play mode
-    if gameState == 'play' then
+    elseif gameState == 'play' then
         -- Draw scoreboard
         scoreboard:render(player1.score, player2.score)
         -- Draw ball
         ball:render()
     end
-    -- new function just to demonstrate how to see FPS in LÃVE2D
+    -- new function just to demonstrate how to see FPS in LÖVE2D
     displayFPS()
     -- end rendering at virtual resolution
     push:apply('end')
