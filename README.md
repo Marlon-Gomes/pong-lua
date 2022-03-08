@@ -72,7 +72,7 @@ TODO: Add a screenshot
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 -->
 
-Pong is a classic game that simulates table tennis, released for Atari in 1972. The game features two paddles, controled by the players, which move vertically across the left and right sides of the screen. Additionally, the game features a ball, which travels across the screen, bouncing off the top and bottom edges and the paddles. Players must try to hit the ball with their paddles to prevent it from falling off the vertical edges of the screen. A player scores when the opposing player fails to catch the ball. The first player to score 11 points wins.
+Pong is a classic game that simulates table tennis, released for Atari in 1972. The game features two paddles, controlled by the players, which move vertically across the left and right sides of the screen. Additionally, the game features a ball, which travels across the screen, bouncing off the top and bottom edges and the paddles. Players must try to hit the ball with their paddles to prevent it from falling off the vertical edges of the screen. A player scores when the opposing player fails to catch the ball. The first player to score 11 points wins.
 
 This project implements Pong with the Lua programming language, using the LÖVE2D framework. It is inspired by Harvard's University 2018 CDS0 course, taught by Colton Ogden. The lectures are available on this [Youtube playlist](https://www.youtube.com/playlist?list=PLWKjhJtqVAbluXJKKbCIb4xd7fcRkpzoz).
 
