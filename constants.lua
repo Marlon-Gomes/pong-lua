@@ -6,7 +6,7 @@
     Program constants to be shared accross various files.
 
     Author: Marlon de Oliveira Gomes
-    mgomes.math@gmail.com
+    72144990+Marlon-Gomes@users.noreply.github.com
 ]]
 
 local constants = {

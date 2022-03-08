@@ -196,7 +196,7 @@ Pong-lua relies on source code and media files that are subject to licenses of t
 <!-- CONTACT -->
 ## Contact
 
-Marlon de Oliveira Gomes - mgomes.math@gmail.com
+Marlon de Oliveira Gomes - 72144990+Marlon-Gomes@users.noreply.github.com
 
 Project Link: [https://github.com/Marlon-Gomes/pong-lua](https://github.com/Marlon-Gomes/pong-lua)
 
