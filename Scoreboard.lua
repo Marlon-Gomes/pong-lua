@@ -6,7 +6,7 @@
     Class Scoreboard, used to keep the game's score.
 
     Author: Marlon de Oliveira Gomes
-    mgomes.math@gmail.com
+    72144990+Marlon-Gomes@users.noreply.github.com
 ]]
 -- Importing modules
 local Class = require 'Class'

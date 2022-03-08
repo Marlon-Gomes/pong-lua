@@ -37,13 +37,22 @@ Website: https://lua.org/ </br>
 License: [View license][lua-logo-license] </br>
 Copyright © 1998 Lua.org. Graphic design by Alexandre Nakonechnyj.
 
+### Victory sound
+File: [victory.mp3][victory-sound]</br>
+Website: https://www.freesoundslibrary.com/8bit-retro-success-victory/</br>
+License: CC BY 4.0, [View license][victory-sound-license]</br>
+Copyright (c) 2022 Free Sounds Library.
+
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [atari-classic-font-folder]: ../fonts/atari-classic-font
 [atari-classic-font-license]: LICENSE.atari-classic-font.txt
+[class]: ../class.lua
 [push]: ../push.lua
 [push-license]: LICENSE.push.txt
 [love-logo]: ../images/love_logo.png
 [love-logo-license]: LICENSE.love_logo.txt
 [lua-logo]: ../images/lua_logo.png
 [lua-logo-license]: LICENSE.lua_logo.txt
+[victory-sound]: ../sounds/victory.mp3
+[victory-sound-license]: LICENSE.victory.txt

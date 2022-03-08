@@ -6,7 +6,7 @@
     A Paddle Class.
 
     Author: Marlon de Oliveira Gomes
-    mgomes.math@gmail.com
+    72144990+Marlon-Gomes@users.noreply.github.com
 ]]
 
 -- Importing modules
