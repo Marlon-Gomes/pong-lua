@@ -112,7 +112,7 @@ function Ball:reset(servingPlayer)
     servingPlayer = servingPlayer or 0
     -- Ball positions
     self.x = constants.VIRTUAL_WIDTH / 2 - 2
-    self.y = constants.VIRTUAL_HEIGHT / 2 -2
+    self.y = constants.VIRTUAL_HEIGHT / 2 - 2
     -- Initialize ball velocity
     self.dx, self.dy = setVelocity(servingPlayer)
 end

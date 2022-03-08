@@ -37,8 +37,8 @@ function love.load()
     -- Declare fonts
     smallFont = love.graphics.newFont(
         'fonts/atari-classic-font/AtariClassicChunky-PxXP.ttf', 8)
-    scoreFont = love.graphics.newFont(
-        'fonts/atari-classic-font/AtariClassicChunky-PxXP.ttf', 32)
+    largeFont = love.graphics.newFont(
+            'fonts/atari-classic-font/AtariClassicChunky-PxXP.ttf', 16)
     -- Set font for the welcome screen
     love.graphics.setFont(smallFont)
     -- initialize virtualization
@@ -83,11 +83,21 @@ function love.update(dt)
         if ball.x < 0 then
                 player2.score = player2.score + 1
                 servingPlayer = 2
-                gameState = 'serve'
+                if player2.score == 11 then
+                    winningPlayer = 2
+                    gameState = 'done'
+                else
+                    gameState = 'serve'
+                end
         elseif ball.x > constants.VIRTUAL_WIDTH then
                 player1.score = player1.score + 1
                 servingPlayer = 1
-                gameState = 'serve'
+                if player1.score == 11 then
+                    winningPlayer = 1
+                    gameState = 'done'
+                else
+                    gameState = 'serve'
+                end
         end
         -- Player 1 movement
         player1.paddle:update(dt)
@@ -108,6 +118,17 @@ function love.keypressed(key)
             gameState = 'play'
         elseif gameState == 'serve' then
             gameState = 'play'
+        elseif gameState == 'done' then
+            -- Return to start screen
+            gameState = 'start'
+            -- Reset game assets
+            -- Player scores
+            player1:reset()
+            player2:reset()
+            -- Ball positions
+            ball:reset()
+            servingPlayer = nil
+            winningPlayer = nil
         else -- Return to start screen
             gameState = 'start'
             -- Reset game assets
@@ -116,6 +137,8 @@ function love.keypressed(key)
             player2:reset()
             -- Ball positions
             ball:reset()
+            servingPlayer = nil
+            winningPlayer = nil
         end
     end
 end
@@ -165,6 +188,17 @@ function love.draw()
         scoreboard:render(player1.score, player2.score)
         -- Draw ball
         ball:render()
+    elseif gameState == 'done' then
+        love.graphics.setFont(largeFont)
+        love.graphics.printf(
+            "Player " .. tostring(winningPlayer) .. " wins!",
+            0, 10, constants.VIRTUAL_WIDTH, 'center'
+        )
+        love.graphics.setFont(smallFont)
+        love.graphics.printf(
+            'Press enter to restart!',
+            0, 30, constants.VIRTUAL_WIDTH, 'center'
+        )
     end
     -- new function just to demonstrate how to see FPS in LÖVE2D
     displayFPS()
