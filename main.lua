@@ -81,6 +81,7 @@ function love.update(dt)
                 servingPlayer = 2
                 if player2.score == 11 then
                     winningPlayer = 2
+                    constants.VICTORY:play()
                     gameState = 'done'
                 else
                     constants.SCORE:play()
