@@ -1,12 +1,14 @@
 --[[
+    Copyright © 2022 Marlon de Oliveira Gomes.
+    MIT License
+
     Project: Pong-Lua
     A remake of the classic Atari game Pong in Lua.
 
     File: main.lua
     The Main Program
 
-    Author: Marlon de Oliveira Gomes
-    72144990+Marlon-Gomes@users.noreply.github.com
+    Contact: 72144990+Marlon-Gomes@users.noreply.github.com
 ]]
 
 --[[
@@ -45,7 +47,7 @@ function love.load()
         constants.WINDOW_HEIGHT,
         {
             fullscreen = false,
-            resizable = false,
+            resizable = true,
             vsync = true
         }
     )
@@ -61,6 +63,11 @@ function love.load()
         Initialize the game state into 'start' mode
     ]]
     gameState = 'start'
+end
+
+-- Enable resizing via push
+function love.resize(w, h)
+    push:resize(w,h)
 end
 
 function love.update(dt)

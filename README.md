@@ -1,3 +1,15 @@
+<!--
+    Copyright © 2022 Marlon de Oliveira Gomes.
+    MIT License
+
+    Project: Pong-Lua
+    A remake of the classic Atari game Pong in Lua.
+
+    File: README.md
+    Program constants to be shared across various files.
+
+    Contact: 72144990+Marlon-Gomes@users.noreply.github.com
+-->
 <div id="top"></div>
 
 <!-- PROJECT SHIELDS -->

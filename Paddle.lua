@@ -1,12 +1,14 @@
 --[[
+    Copyright © 2022 Marlon de Oliveira Gomes.
+    MIT License
+
     Project: Pong-Lua
     A remake of the classic Atari game Pong in Lua.
 
     File: Paddle.lua
     A Paddle Class.
 
-    Author: Marlon de Oliveira Gomes
-    72144990+Marlon-Gomes@users.noreply.github.com
+    Contact: 72144990+Marlon-Gomes@users.noreply.github.com
 ]]
 
 -- Importing modules

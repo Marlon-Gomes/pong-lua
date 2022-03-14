@@ -1,4 +1,7 @@
 --[[
+    Copyright © 2022 Marlon de Oliveira Gomes.
+    MIT License
+
     Project: Pong-Lua
     A remake of the classic Atari game Pong in Lua.
 
@@ -6,8 +9,7 @@
     Class Player, a first-class game entity that control and is observed by
     other assets.
 
-    Author: Marlon de Oliveira Gomes
-    72144990+Marlon-Gomes@users.noreply.github.com
+    Contact: 72144990+Marlon-Gomes@users.noreply.github.com
 ]]
 -- Importing modules
 local Class = require 'class'
