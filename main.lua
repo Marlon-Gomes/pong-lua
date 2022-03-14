@@ -45,7 +45,7 @@ function love.load()
         constants.WINDOW_HEIGHT,
         {
             fullscreen = false,
-            resizable = false,
+            resizable = true,
             vsync = true
         }
     )
@@ -61,6 +61,11 @@ function love.load()
         Initialize the game state into 'start' mode
     ]]
     gameState = 'start'
+end
+
+-- Enable resizing via push
+function love.resize(w, h)
+    push:resize(w,h)
 end
 
 function love.update(dt)
