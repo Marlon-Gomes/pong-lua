@@ -42,6 +42,7 @@ show_help()
     echo "        -t <args> Build for args (default all)"
     echo "        -v        Echo version"
     echo "Available arguments:"
+    echo "all All targets (default)"
     echo "love    Love"
     echo "macos   MacOSX"
     echo
@@ -195,7 +196,7 @@ while getopts ":chvt:" option; do
             else
                 echo "Invalid option."
                 echo "Available options are:"
-                echo "  all"
+                echo "  all (default)"
                 echo "  macos"
                 echo "  love"
                 exit 1
