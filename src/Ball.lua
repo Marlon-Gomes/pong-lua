@@ -5,15 +5,15 @@
     Project: Pong-Lua
     A remake of the classic Atari game Pong in Lua.
 
-    File: Ball.lua
+    File: src/Ball.lua
     A Ball Class.
 
     Contact: 72144990+Marlon-Gomes@users.noreply.github.com
 ]]
 
 -- Importing modules
-local Class = require 'class'
-local constants = require 'constants'
+local Class = require 'external/class'
+local constants = require 'src/constants'
 
 -- Class declaration
 local Ball = Class{}

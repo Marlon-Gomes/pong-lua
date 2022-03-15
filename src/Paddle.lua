@@ -5,15 +5,15 @@
     Project: Pong-Lua
     A remake of the classic Atari game Pong in Lua.
 
-    File: Paddle.lua
+    File: src/Paddle.lua
     A Paddle Class.
 
     Contact: 72144990+Marlon-Gomes@users.noreply.github.com
 ]]
 
 -- Importing modules
-local Class = require 'class'
-local constants = require 'constants'
+local Class = require 'external/class'
+local constants = require 'src/constants'
 
 -- Local constants, used only in this file.
 local PADDLE_MIN_Y = constants.VIRTUAL_HEIGHT - constants.PADDLE_HEIGHT

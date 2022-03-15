@@ -45,14 +45,14 @@ Copyright (c) 2022 Free Sounds Library.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[atari-classic-font-folder]: ../fonts/atari-classic-font
+[atari-classic-font-folder]: ../media/fonts/atari-classic-font
 [atari-classic-font-license]: LICENSE.atari-classic-font.txt
-[class]: ../class.lua
-[push]: ../push.lua
+[class]: ../external/class.lua
+[push]: ../external/push.lua
 [push-license]: LICENSE.push.txt
-[love-logo]: ../images/love_logo.png
+[love-logo]: ../media/images/love_logo.png
 [love-logo-license]: LICENSE.love_logo.txt
-[lua-logo]: ../images/lua_logo.png
+[lua-logo]: ../media/images/lua_logo.png
 [lua-logo-license]: LICENSE.lua_logo.txt
-[victory-sound]: ../sounds/victory.mp3
+[victory-sound]: ../media/sounds/victory.mp3
 [victory-sound-license]: LICENSE.victory.txt

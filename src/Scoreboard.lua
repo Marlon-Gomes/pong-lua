@@ -1,18 +1,18 @@
 --[[
     Copyright © 2022 Marlon de Oliveira Gomes.
     MIT License
-    
+
     Project: Pong-Lua
     A remake of the classic Atari game Pong in Lua.
 
-    File: Scoreboard.lua
+    File: src/Scoreboard.lua
     Class Scoreboard, used to keep the game's score.
 
     Contact: 72144990+Marlon-Gomes@users.noreply.github.com
 ]]
 -- Importing modules
-local Class = require 'Class'
-local constants = require 'constants'
+local Class = require 'external/class'
+local constants = require 'src/constants'
 
 -- Class declaration
 local Scoreboard = Class{}
