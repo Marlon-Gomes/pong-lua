@@ -15,20 +15,18 @@
     Low-res appearance: push (https://github.com/Ulydev/push) is a library
     that allows us to draw the game at a virtual resolution.
 ]]
-local push = require 'push'
 
-local constants = require 'constants'
+-- External libraries
+local push = require 'external/push'
 
---[[
-    Importing classes
-]]
-local Ball = require 'Ball'
-local Paddle = require 'Paddle'
-local Player = require 'Player'
-local Scoreboard = require 'Scoreboard'
---[[
-    Initializer
-]]
+-- Importing source
+local constants = require 'src/constants'
+local Ball = require 'src/Ball'
+local Paddle = require 'src/Paddle'
+local Player = require 'src/Player'
+local Scoreboard = require 'src/Scoreboard'
+
+-- Initializer
 function love.load()
     -- use nearest-neighbor filtering on upscaling and downscaling
     love.graphics.setDefaultFilter('nearest','nearest')

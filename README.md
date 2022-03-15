@@ -21,28 +21,28 @@ TODO: Add shields related to testing, building, and so on.
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="images/pong.png" alt="Logo" width="250">
+  <a href="https://github.com/Marlon-Gomes/pong-lua">
+    <img src="docs/images/pong.png" alt="Logo" width="250">
   </a>
 
 <h3 align="center">Pong-Lua</h3>
 
   <p align="center">
-    project_description
+    The classical Atari game, coded in Lua!
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+<!--    <a href="https://github.com/Marlon-Gomes/pong-lua"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/Marlon-Gomes/pong-lua">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+-->
+    <a href="https://github.com/Marlon-Gomes/pong-lua/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/Marlon-Gomes/pong-lua/issues">Request Feature</a>
   </p>
 </div>
 
@@ -61,8 +61,9 @@ TODO: Add shields related to testing, building, and so on.
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#macos">MacOS</a></li>
+        <li><a href="#love-app">Love App</a></li>
+        <li><a href="#build-from-source">Build from Source</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -78,11 +79,8 @@ TODO: Add shields related to testing, building, and so on.
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<!--
-TODO: Add a screenshot
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
--->
+![Product Name Screen Shot][welcome-screenshot]
 
 Pong is a classic game that simulates table tennis, released for Atari in 1972. The game features two paddles, controlled by the players, which move vertically across the left and right sides of the screen. Additionally, the game features a ball, which travels across the screen, bouncing off the top and bottom edges and the paddles. Players must try to hit the ball with their paddles to prevent it from falling off the vertical edges of the screen. A player scores when the opposing player fails to catch the ball. The first player to score 11 points wins.
 
@@ -97,7 +95,7 @@ This project implements Pong with the Lua programming language, using the LÖVE2
 <table>
   <tr>
     <td>
-        <img src="images/lua_logo.png" alt="Lua Logo" height="48">
+        <img src="docs/images/lua_logo.png" alt="Lua Logo" height="48">
     </td>
     <td>
         <a href="https://lua.org/" target = "_blank">Lua
@@ -106,7 +104,7 @@ This project implements Pong with the Lua programming language, using the LÖVE2
   </tr>
   <tr>
     <td>
-        <img src="images/love_logo.png" alt="Love2D Logo" height="48">
+        <img src="docs/images/love_logo.png" alt="Love2D Logo" height="48">
     </td>
     <td>
     <a href="https://love2d.org/" target = "_blank">LÖVE2D
@@ -122,61 +120,71 @@ This project implements Pong with the Lua programming language, using the LÖVE2
 
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
 
-The game runs on LÖVE2D. For details on how to install LÖVE2D for your specific platform, consult their [webpage](https://love2d.org).
+### MacOS
+The MacOS version of the game runs natively on Intel-based Macs. It has been tested on MacOS Monterey 12.2.1.
 
-<!--
-* a prerequisite
-  ```sh
-  some shell script
-  ```
-TODO: possibly add instructions on installing lua
--->
-<!--
-TODO: Add installation instructions.
+### Love App
+The .love release file can be used in conjunction with the Love app in any system that supports Love. For details on how to install Love for your specific platform, consult the LÖVE2D [webpage](https://love2d.org). Once Love is installed, just double click the .love file.
 
-### Installation
+### Build from Source
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/Marlon-Gomes/pong-lua.git
+   git clone https://github.com/Marlon-Gomes/pong-lua.git path/to/your/repo
    ```
-2. Do something else
-   ```sh
-   a fancy shell script
-   ```
+2. Run the build script:
+    - Build for Love
+        ```sh
+        cd path/to/your/repo
+        ./build.sh -t love
+        ```
+        or,
+    - Build for MacOS
+        ```sh
+        cd path/to/your/repo
+        ./build.sh -t macos
+        ```
 
+For more info on ```build.sh```, use the help flag
+```sh
+cd path/to/your/repo
+./build.sh -h
+```
 <p align="right">(<a href="#top">back to top</a>)</p>
--->
 
-
-<!-- USAGE EXAMPLES
-TODO: add usage
+<!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+The game is played with 5 keys:
+- W, S for player 1
+- Up, Down for player 2
+- Enter/Return to cycle between game stages.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+Pressing Enter/Return from the welcome screen initializes play mode.
+
+![Gameplay screenshot][gameplay-screenshot]
+
+Players must use their controls to hit the ball with the paddle. If a player misses, the other player scores; the scoring player serves the next round.
+
+![Service screenshot][service-screenshot]
+
+The first player to score 11 points wins!
+
+![Victory screenshot][victory-screenshot]
 
 <p align="right">(<a href="#top">back to top</a>)</p>
--->
 
+<!-- ROADMAP -->
 
-<!-- ROADMAP
-TODO: add a roadmap
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [ ] Add unit tests.
+- [ ] Add build systems for other platforms.
 
 See the [open issues](https://github.com/Marlon-Gomes/pong-lua/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
--->
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -192,8 +200,6 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- LICENSE -->
 ## License
 
@@ -202,8 +208,6 @@ Pong-lua is distributed under the MIT License. See `LICENSE.txt` for more inform
 Pong-lua relies on source code and media files that are subject to licenses of their own. Please consult the third-party licenses [README.md][third-party-licenses-url] for a list containing links to individual licenses.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- CONTACT -->
 ## Contact
@@ -238,10 +242,11 @@ Project Link: [https://github.com/Marlon-Gomes/pong-lua](https://github.com/Marl
 [issues-url]: https://github.com/Marlon-Gomes/pong-lua/issues
 [license-shield]: https://img.shields.io/github/license/Marlon-Gomes/pong-lua.svg?style=for-the-badge
 [license-url]: https://github.com/Marlon-Gomes/pong-lua/blob/main/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/marlon-deoliveiragomes
-[product-screenshot]: images/screenshot.pngA
+[welcome-screenshot]: docs/images/welcome_screen.png
+[gameplay-screenshot]: docs/images/gameplay_screen.png
+[service-screenshot]: docs/images/service_screen.png
+[victory-screenshot]: docs/images/victory_screen.png
 [hump-docs]: https://hump.readthedocs.io/en/latest/#
-[love-logo]: images/love_logo.png
-[lua-logo]: images/lua_logo.png
+[love-logo]: docs/images/love_logo.png
+[lua-logo]: media/images/lua_logo.png
 [third-party-licenses-url]: THIRD_PARTY_LICENSES/README.md

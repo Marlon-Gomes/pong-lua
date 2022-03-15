@@ -5,16 +5,17 @@
     Project: Pong-Lua
     A remake of the classic Atari game Pong in Lua.
 
-    File: Player.lua
+    File: src/Player.lua
     Class Player, a first-class game entity that control and is observed by
     other assets.
 
     Contact: 72144990+Marlon-Gomes@users.noreply.github.com
 ]]
--- Importing modules
-local Class = require 'class'
-local constants = require 'constants'
-local Paddle = require 'Paddle'
+-- External libraries
+local Class = require 'external/class'
+-- Source
+local constants = require 'src/constants'
+local Paddle = require 'src/Paddle'
 
 -- Class declaration
 local Player = Class{}
