@@ -1,17 +1,88 @@
+<!--
+    Copyright © 2022 Marlon de Oliveira Gomes.
+    MIT License
+
+    Project: Pong-Lua
+    A remake of the classic Atari game Pong in Lua.
+
+    File: README.md
+    Program constants to be shared across various files.
+
+    Contact: 72144990+Marlon-Gomes@users.noreply.github.com
+-->
 <div id="top"></div>
 
 <!-- PROJECT SHIELDS -->
 <!--
 TODO: Add shields related to testing, building, and so on.
 -->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
 
-<!--
-TODO: Add a screenshot
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/Marlon-Gomes/pong-lua">
+    <img src="docs/images/pong.png" alt="Logo" width="250">
+  </a>
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<h3 align="center">Pong-Lua</h3>
+
+  <p align="center">
+    The classical Atari game, coded in Lua!
+    <br />
+<!--    <a href="https://github.com/Marlon-Gomes/pong-lua"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/Marlon-Gomes/pong-lua">View Demo</a>
+    ·
 -->
+    <a href="https://github.com/Marlon-Gomes/pong-lua/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/Marlon-Gomes/pong-lua/issues">Request Feature</a>
+  </p>
+</div>
 
-Pong is a classic game that simualtes table tennis, released for Atari in 1972. The game features two paddles, controleed by the players, which move vertically across the left and right sides of the screen. Additionally, the game features a ball, which travels across the screen, bouncing off the top and bottom edges and the paddles. Players must try to hit the ball with their paddles to prevent it from falling off the vertical edges of the screen. A player scores when the opposing player fails to catch the ball. The first player to score 11 points wins.
+
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#macos">MacOS</a></li>
+        <li><a href="#love-app">Love App</a></li>
+        <li><a href="#build-from-source">Build from Source</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+
+![Product Name Screen Shot][welcome-screenshot]
+
+Pong is a classic game that simulates table tennis, released for Atari in 1972. The game features two paddles, controlled by the players, which move vertically across the left and right sides of the screen. Additionally, the game features a ball, which travels across the screen, bouncing off the top and bottom edges and the paddles. Players must try to hit the ball with their paddles to prevent it from falling off the vertical edges of the screen. A player scores when the opposing player fails to catch the ball. The first player to score 11 points wins.
 
 This project implements Pong with the Lua programming language, using the LÖVE2D framework. It is inspired by Harvard's University 2018 CDS0 course, taught by Colton Ogden. The lectures are available on this [Youtube playlist](https://www.youtube.com/playlist?list=PLWKjhJtqVAbluXJKKbCIb4xd7fcRkpzoz).
 
@@ -24,7 +95,7 @@ This project implements Pong with the Lua programming language, using the LÖVE2
 <table>
   <tr>
     <td>
-        <img src="images/lua_logo.png" alt="Lua Logo" height="48">
+        <img src="docs/images/lua_logo.png" alt="Lua Logo" height="48">
     </td>
     <td>
         <a href="https://lua.org/" target = "_blank">Lua
@@ -33,7 +104,7 @@ This project implements Pong with the Lua programming language, using the LÖVE2
   </tr>
   <tr>
     <td>
-        <img src="images/love_logo.png" alt="Love2D Logo" height="48">
+        <img src="docs/images/love_logo.png" alt="Love2D Logo" height="48">
     </td>
     <td>
     <a href="https://love2d.org/" target = "_blank">LÖVE2D
@@ -49,61 +120,71 @@ This project implements Pong with the Lua programming language, using the LÖVE2
 
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
 
-The game runs on LÖVE2D. For details on how to install LÖVE2D for your specific platform, consult their [webpage](https://love2d.org).
+### MacOS
+The MacOS version of the game runs natively on Intel-based Macs. It has been tested on MacOS Monterey 12.2.1.
 
-<!--
-* a prerequisite
-  ```sh
-  some shell script
-  ```
-TODO: possibly add instructions on installing lua
--->
-<!--
-TODO: Add installation instructions.
+### Love App
+The .love release file can be used in conjunction with the Love app in any system that supports Love. For details on how to install Love for your specific platform, consult the LÖVE2D [webpage](https://love2d.org). Once Love is installed, just double click the .love file.
 
-### Installation
+### Build from Source
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/Marlon-Gomes/pong-lua.git
+   git clone https://github.com/Marlon-Gomes/pong-lua.git path/to/your/repo
    ```
-2. Do something else
-   ```sh
-   a fancy shell script
-   ```
+2. Run the build script:
+    - Build for Love
+        ```sh
+        cd path/to/your/repo
+        ./build.sh -t love
+        ```
+        or,
+    - Build for MacOS
+        ```sh
+        cd path/to/your/repo
+        ./build.sh -t macos
+        ```
 
+For more info on ```build.sh```, use the help flag
+```sh
+cd path/to/your/repo
+./build.sh -h
+```
 <p align="right">(<a href="#top">back to top</a>)</p>
--->
 
-
-<!-- USAGE EXAMPLES
-TODO: add usage
+<!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+The game is played with 5 keys:
+- W, S for player 1
+- Up, Down for player 2
+- Enter/Return to cycle between game stages.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+Pressing Enter/Return from the welcome screen initializes play mode.
+
+![Gameplay screenshot][gameplay-screenshot]
+
+Players must use their controls to hit the ball with the paddle. If a player misses, the other player scores; the scoring player serves the next round.
+
+![Service screenshot][service-screenshot]
+
+The first player to score 11 points wins!
+
+![Victory screenshot][victory-screenshot]
 
 <p align="right">(<a href="#top">back to top</a>)</p>
--->
 
+<!-- ROADMAP -->
 
-<!-- ROADMAP
-TODO: add a roadmap
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [ ] Add unit tests.
+- [ ] Add build systems for other platforms.
 
 See the [open issues](https://github.com/Marlon-Gomes/pong-lua/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
--->
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -112,28 +193,26 @@ Any contributions you make are **greatly appreciated**.If you have a suggestion 
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+2. Create your Feature Branch by branching from develop (`git checkout -b feature/AmazingFeature develop`)
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Pong-lua is distributed under the MIT License. See `LICENSE.txt` for more information.
+
+Pong-lua relies on source code and media files that are subject to licenses of their own. Please consult the third-party licenses [README.md][third-party-licenses-url] for a list containing links to individual licenses.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- CONTACT -->
 ## Contact
 
-Marlon de Oliveira Gomes - mgomes.math@gmail.com
+Marlon de Oliveira Gomes - 72144990+Marlon-Gomes@users.noreply.github.com
 
 Project Link: [https://github.com/Marlon-Gomes/pong-lua](https://github.com/Marlon-Gomes/pong-lua)
 
@@ -144,12 +223,9 @@ Project Link: [https://github.com/Marlon-Gomes/pong-lua](https://github.com/Marl
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* This code is based on [Colton Ogden](https://github.com/coltonoscopy)'s
-interpretation of the game. It was the subject of a lecture in
-his CS50 course at Harvard in 2018. The link to the original repo
-is below https://github.com/games50/pong.
-
-
+* This code is based on [Colton Ogden](https://github.com/coltonoscopy)'s interpretation of the game. It was the subject of a lecture in his CS50 course at Harvard in 2018. The original repo can be found at https://github.com/games50/pong.
+* Classes are not native to the Lua languange. The implementation of classes used here, <code>class.lua</code>, is part of the [hump][hump-docs] package, a suite of tools for game development in the LÖVE framework due to Matthias Richter.
+* Sound effects were generated with [jsfxr](https://github.com/chr15m/jsfxr). Many thanks to the contributors of the project.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -165,9 +241,12 @@ is below https://github.com/games50/pong.
 [issues-shield]: https://img.shields.io/github/issues/Marlon-Gomes/pong-lua.svg?style=for-the-badge
 [issues-url]: https://github.com/Marlon-Gomes/pong-lua/issues
 [license-shield]: https://img.shields.io/github/license/Marlon-Gomes/pong-lua.svg?style=for-the-badge
-[license-url]: https://github.com/Marlon-Gomes/pong-lua/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/marlon-deoliveiragomes
-[product-screenshot]: images/screenshot.pngA
-[love-logo]: images/love_logo.png
-[lua-logo]: images/lua_logo.png
+[license-url]: https://github.com/Marlon-Gomes/pong-lua/blob/main/LICENSE.txt
+[welcome-screenshot]: docs/images/welcome_screen.png
+[gameplay-screenshot]: docs/images/gameplay_screen.png
+[service-screenshot]: docs/images/service_screen.png
+[victory-screenshot]: docs/images/victory_screen.png
+[hump-docs]: https://hump.readthedocs.io/en/latest/#
+[love-logo]: docs/images/love_logo.png
+[lua-logo]: media/images/lua_logo.png
+[third-party-licenses-url]: THIRD_PARTY_LICENSES/README.md

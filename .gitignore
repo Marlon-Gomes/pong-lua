@@ -1,4 +1,3 @@
-
 # Created by https://www.toptal.com/developers/gitignore/api/lua,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=lua,macos
 
@@ -7,6 +6,7 @@
 luac.out
 
 # luarocks build files
+build/
 *.src.rock
 *.zip
 *.tar.gz
