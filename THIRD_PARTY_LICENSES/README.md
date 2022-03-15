@@ -50,9 +50,9 @@ Copyright (c) 2022 Free Sounds Library.
 [class]: ../external/class.lua
 [push]: ../external/push.lua
 [push-license]: LICENSE.push.txt
-[love-logo]: ../media/images/love_logo.png
+[love-logo]: ../docs/images/love_logo.png
 [love-logo-license]: LICENSE.love_logo.txt
-[lua-logo]: ../media/images/lua_logo.png
+[lua-logo]: ../docs/images/lua_logo.png
 [lua-logo-license]: LICENSE.lua_logo.txt
 [victory-sound]: ../media/sounds/victory.mp3
 [victory-sound-license]: LICENSE.victory.txt
