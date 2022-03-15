@@ -25,7 +25,7 @@ TODO: Add shields related to testing, building, and so on.
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/Marlon-Momes/pong-lua">
+  <a href="https://github.com/Marlon-Gomes/pong-lua">
     <img src="docs/images/pong.png" alt="Logo" width="250">
   </a>
 
@@ -61,8 +61,9 @@ TODO: Add shields related to testing, building, and so on.
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#macos">MacOS</a></li>
+        <li><a href="#love-app">Love App</a></li>
+        <li><a href="#build-from-source">Build from Source</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -79,7 +80,7 @@ TODO: Add shields related to testing, building, and so on.
 ## About The Project
 
 
-[![Product Name Screen Shot][welcome-screenshot]]
+![Product Name Screen Shot][welcome-screenshot]
 
 Pong is a classic game that simulates table tennis, released for Atari in 1972. The game features two paddles, controlled by the players, which move vertically across the left and right sides of the screen. Additionally, the game features a ball, which travels across the screen, bouncing off the top and bottom edges and the paddles. Players must try to hit the ball with their paddles to prevent it from falling off the vertical edges of the screen. A player scores when the opposing player fails to catch the ball. The first player to score 11 points wins.
 
@@ -94,7 +95,7 @@ This project implements Pong with the Lua programming language, using the LÖVE2
 <table>
   <tr>
     <td>
-        <img src="images/lua_logo.png" alt="Lua Logo" height="48">
+        <img src="docs/images/lua_logo.png" alt="Lua Logo" height="48">
     </td>
     <td>
         <a href="https://lua.org/" target = "_blank">Lua
@@ -103,7 +104,7 @@ This project implements Pong with the Lua programming language, using the LÖVE2
   </tr>
   <tr>
     <td>
-        <img src="images/love_logo.png" alt="Love2D Logo" height="48">
+        <img src="docs/images/love_logo.png" alt="Love2D Logo" height="48">
     </td>
     <td>
     <a href="https://love2d.org/" target = "_blank">LÖVE2D
@@ -119,44 +120,60 @@ This project implements Pong with the Lua programming language, using the LÖVE2
 
 To get a local copy up and running follow these simple example steps.
 
-<!--FUTURE
+
 ### MacOS
 The MacOS version of the game runs natively on Intel-based Macs. It has been tested on MacOS Monterey 12.2.1.
 
-*Note*: MacOS will complain about an unidentified developer.
-
-### Other systems
+### Love App
 The .love release file can be used in conjunction with the Love app in any system that supports Love. For details on how to install Love for your specific platform, consult the LÖVE2D [webpage](https://love2d.org). Once Love is installed, just double click the .love file.
 
-### Build from source
+### Build from Source
 
 1. Clone the repo
    ```sh
    git clone https://github.com/Marlon-Gomes/pong-lua.git path/to/your/repo
    ```
 2. Run the build script:
-    - .love build
+    - Build for Love
         ```sh
-        ./build.sh
+        cd path/to/your/repo
+        ./build.sh -t love
         ```
-    - MacOS build
+        or,
+    - Build for MacOS
         ```sh
-        ./build.sh -M
+        cd path/to/your/repo
+        ./build.sh -t macos
         ```
--->
+
+For more info on ```build.sh```, use the help flag
+```sh
+cd path/to/your/repo
+./build.sh -h
+```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- USAGE EXAMPLES
-TODO: add usage
+<!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+The game is played with 5 keys:
+- W, S for player 1
+- Up, Down for player 2
+- Enter/Return to cycle between game stages.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+Pressing Enter/Return from the welcome screen initializes play mode.
+
+![Gameplay screenshot][gameplay-screenshot]
+
+Players must use their controls to hit the ball with the paddle. If a player misses, the other player scores; the scoring player serves the next round.
+
+![Service screenshot][service-screenshot]
+
+The first player to score 11 points wins!
+
+![Victory screenshot][victory-screenshot]
 
 <p align="right">(<a href="#top">back to top</a>)</p>
--->
-
 
 <!-- ROADMAP -->
 
@@ -226,6 +243,9 @@ Project Link: [https://github.com/Marlon-Gomes/pong-lua](https://github.com/Marl
 [license-shield]: https://img.shields.io/github/license/Marlon-Gomes/pong-lua.svg?style=for-the-badge
 [license-url]: https://github.com/Marlon-Gomes/pong-lua/blob/main/LICENSE.txt
 [welcome-screenshot]: docs/images/welcome_screen.png
+[gameplay-screenshot]: docs/images/gameplay_screen.png
+[service-screenshot]: docs/images/service_screen.png
+[victory-screenshot]: docs/images/victory_screen.png
 [hump-docs]: https://hump.readthedocs.io/en/latest/#
 [love-logo]: docs/images/love_logo.png
 [lua-logo]: media/images/lua_logo.png
