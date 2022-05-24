@@ -1,2 +1,4 @@
 *.pdf binary
 *.rtf binary
+# Mark external code as vendored to be excluded from github's language stats
+external/* linguist-vendored
