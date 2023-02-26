@@ -1,4 +1,24 @@
-*.pdf binary
-*.rtf binary
+# File attributes
+# Audio
+*.mp3             binary
+*.wav             binary
+# Config
+.gitattributes    text
+.gitconfig        text
+# Documentation
+*.md              text diff=markdown
+*.txt             text
+# Fonts
+*.ttf             binary
+# Graphics
+*.png             binary
+*.pdf             binary
+# Source code
+*.sh              text eol=lf
+# Ignore files (like .npmignore or .gitignore)
+*.*ignore         text
+# All other files
+*                 text=auto
+
 # Mark external code as vendored to be excluded from github's language stats
 external/* linguist-vendored

@@ -1,6 +1,7 @@
 # Third-party licenses
 
-Pong-lua uses third-party software and media that are compatibly licensed. We list these below. A copy of each license is available in this folder.
+Pong-lua uses third-party software and media that are compatibly licensed. We
+list these below. A copy of each license is available in this folder.
 
 ## Code
 
