@@ -11,11 +11,6 @@
     Contact: 72144990+Marlon-Gomes@users.noreply.github.com
 ]]
 
---[[
-    Low-res appearance: push (https://github.com/Ulydev/push) is a library
-    that allows us to draw the game at a virtual resolution.
-]]
-
 -- External libraries
 local push = require 'external/push'
 
@@ -25,6 +20,12 @@ local Ball = require 'src/Ball'
 local Paddle = require 'src/Paddle'
 local Player = require 'src/Player'
 local Scoreboard = require 'src/Scoreboard'
+local StateMachine = require 'src/StateMachine'
+local TitleScreenState = require 'src/states/TitleScreenState'
+local ServeState = require 'src/states/ServeState'
+local PlayState = require 'src/states/PlayState'
+local PauseState = require 'src/states/PauseState'
+local EndGameState = require 'src/states/EndGameState'
 
 -- Initializer
 function love.load()
@@ -49,18 +50,22 @@ function love.load()
             vsync = true
         }
     )
-    -- Initialize the game's assets
-    -- Ball
-    ball = Ball()
-    -- Players (each with their own paddle and score).
-    player1 = Player(1)
-    player2 = Player(2)
-    -- Scoreboard
-    scoreboard = Scoreboard()
-    --[[
-        Initialize the game state into 'start' mode
-    ]]
-    gameState = 'start'
+    -- Initialize the game's global elements: ball, players, and scoreboard.
+    gBall = Ball()
+    gPlayer1 = Player(1)
+    gPlayer2 = Player(2)
+    gScoreboard = Scoreboard()
+    -- Initialize state machine with all state-returning functions
+    gStateMachine = StateMachine {
+        ['title'] = function() return TitleScreenState() end,
+        ['serve'] = function() return ServeState() end,
+        ['play'] = function() return PlayState() end,
+        ['pause'] = function() return PauseState() end,
+        ['end'] = function() return EndGameState() end
+    }
+    gStateMachine:change('title')
+    -- A table to keep track of keys pressed
+    love.keyboard.keysPressed = {}
 end
 
 -- Enable resizing via push
@@ -69,83 +74,26 @@ function love.resize(w, h)
 end
 
 function love.update(dt)
-    if gameState == 'serve' then
-        ball:reset(servingPlayer)
-    elseif gameState == 'play' then
-        --[[
-            Check if ball has collided with either the top or bottom edges or
-            one of the paddles. If so, handle the collision.
-        ]]
-        ball:handleCollisions(player1.paddle, player2.paddle)
-        --[[
-            Check if the ball has gone out of bounds. If so, increment score
-            and reset the ball.
-        ]]
-        if ball.x < 0 then
-                player2.score = player2.score + 1
-                servingPlayer = 2
-                if player2.score == 11 then
-                    winningPlayer = 2
-                    constants.VICTORY:play()
-                    gameState = 'done'
-                else
-                    constants.SCORE:play()
-                    gameState = 'serve'
-                end
-        elseif ball.x > constants.VIRTUAL_WIDTH then
-                player1.score = player1.score + 1
-                servingPlayer = 1
-                if player1.score == 11 then
-                    winningPlayer = 1
-                    constants.VICTORY:play()
-                    gameState = 'done'
-                else
-                    constants.SCORE:play()
-                    gameState = 'serve'
-                end
-        end
-        -- Player 1 movement
-        player1.paddle:update(dt)
-        -- Player 2 movement
-        player2.paddle:update(dt)
-        -- Ball movement
-        ball:update(dt)
-    end
+    gStateMachine:update(dt)
+    -- Reset the keysPressed table
+    love.keyboard.keysPressed = {}
 end
+
 --[[
     Game state handling
 ]]
 function love.keypressed(key)
+    love.keyboard.keysPressed[key] = true
     if key == 'escape' then -- Terminate the application
         love.event.quit()
-    elseif key == 'enter' or key == 'return' then
-        if gameState == 'start' then -- Initialize game
-            gameState = 'play'
-        elseif gameState == 'serve' then
-            gameState = 'play'
-        elseif gameState == 'done' then
-            -- Return to start screen
-            gameState = 'start'
-            -- Reset game assets
-            -- Player scores
-            player1:reset()
-            player2:reset()
-            -- Ball positions
-            ball:reset()
-            servingPlayer = nil
-            winningPlayer = nil
-        else -- Return to start screen
-            gameState = 'start'
-            -- Reset game assets
-            -- Player scores
-            player1:reset()
-            player2:reset()
-            -- Ball positions
-            ball:reset()
-            servingPlayer = nil
-            winningPlayer = nil
-        end
     end
+end
+
+--[[
+    Check for single key press
+]]
+function love.keyboard.wasPressed(key)
+    return love.keyboard.keysPressed[key]
 end
 
 --[[
@@ -159,52 +107,11 @@ function love.draw()
         between 0 and 1
     --]]
     love.graphics.clear(40/255, 45/255, 52/255, 1)
-    -- using virtual width and virtual height
-    love.graphics.setFont(constants.SMALLFONT)
-    -- Draw regardless of game game state
-    --[[
-        Add rectangles for paddles and ball
-    ]]
-    -- left side
-    player1.paddle:render()
-    -- right side
-    player2.paddle:render()
-    -- Draw "Hello, Pong!" if game is in start mode
-    if gameState == 'start' then
-        love.graphics.printf(
-            'Hello, Pong!',                   -- Welcome text
-            0,                                -- Starting X
-            constants.VIRTUAL_HEIGHT / 2 - 6, -- Starting Y
-            constants.VIRTUAL_WIDTH,          -- # of pixels to center within
-            'center'                          -- alignment mode
-        )
-    elseif gameState == 'serve' then
-        love.graphics.setFont(constants.SMALLFONT)
-        love.graphics.printf(
-            'Player ' .. tostring(servingPlayer) .. "'s serve!",
-            0, 10, constants.VIRTUAL_WIDTH, 'center'
-        )
-        love.graphics.printf(
-            'Press Enter to serve!', 0, 20, constants.VIRTUAL_WIDTH, 'center'
-        )
-    -- Draw game score board and ball only if game is in play mode
-    elseif gameState == 'play' then
-        -- Draw scoreboard
-        scoreboard:render(player1.score, player2.score)
-        -- Draw ball
-        ball:render()
-    elseif gameState == 'done' then
-        love.graphics.setFont(constants.LARGEFONT)
-        love.graphics.printf(
-            "Player " .. tostring(winningPlayer) .. " wins!",
-            0, 10, constants.VIRTUAL_WIDTH, 'center'
-        )
-        love.graphics.setFont(constants.SMALLFONT)
-        love.graphics.printf(
-            'Press enter to restart!',
-            0, 30, constants.VIRTUAL_WIDTH, 'center'
-        )
-    end
+    -- Paddles are drawn regardless of game game state
+    gPlayer1.paddle:render()
+    gPlayer2.paddle:render()
+    -- Render other elements depending on state
+    gStateMachine:render()
     -- new function just to demonstrate how to see FPS in LÖVE2D
     displayFPS()
     -- end rendering at virtual resolution
@@ -215,6 +122,6 @@ end
 function displayFPS()
     -- simple FPS display across all states
     love.graphics.setFont(constants.SMALLFONT)
-    love.graphics.setColor(0, 255, 0, 255)
+    love.graphics.setColor(0, 1, 0, 1)
     love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 10, 10)
 end

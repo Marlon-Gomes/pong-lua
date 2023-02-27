@@ -183,7 +183,7 @@ function Ball:bounceOffPaddle(paddle)
     if self.dx < 0 then -- ball collided with left paddle
         self.x = paddle.x + paddle.width
     else -- ball collided with the right paddle
-        self.x = paddle.x - ball.width
+        self.x = paddle.x - self.width
     end
     -- reflect horizontal velocity
     -- change vertical velocity randomly, (keeping direction)
